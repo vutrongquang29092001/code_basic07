@@ -18,26 +18,33 @@ public class Code_Basic07 {
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("nhap xau");
-        int count = 0;
-//        String str = sc.nextLine();
-        String str = "adsdsdsa";
-//        if (str.length() % 2 == 0) {
-            for (int i = 0; i < str.length() / 2; i++) {
-                if (str.charAt(i) == str.charAt(str.length() - i - 1)) {
-                    count += 1;
-                } else {
-                    System.out.println("khong là xâu Palindrome");
-                    return;
-                }
-                if (count == str.length() / 2) {
-                    System.out.println("la xau Palindrome");
-                }
-
-            }
-//        }
+        int n = 3600;
+        int a[] = {2,3,0};
+        bai6(a, n);
     }
 
+     public static void bai6(int a[], int x){
+        if(x>=0 && x <60){
+            int k = a[2]+x;
+            if( k > 60){
+                k = k - 60;
+                a[1] ++;
+            }
+            a[2] = k;
+            System.out.println(a[0]+":"+a[1]+":"+a[2]);
+        }
+        if(x>= 60 && x< 3600 ){
+            a[1] += x/60;
+            int k = x%60;
+            bai6(a,k);
+        }
+        if(x>= 3600 ){
+            a[0] += x / 3600;
+            int k = x%3600;
+            bai6(a,k);
+        }
+        
+    }
     public static double dienTich(double a) {
         return (a * a * Math.PI);
     }
@@ -104,10 +111,10 @@ public class Code_Basic07 {
         if (a >= 0 && a < 10) {
             str += s[a];
         } else if (a >= 10 && a < 20) {
-            if(a == 10){
+            if (a == 10) {
                 str = "muoi";
-            }else{
-                str = "muoi " + s[a%10];
+            } else {
+                str = "muoi " + s[a % 10];
             }
         } else if (a % 10 == 0) {
             str += s[a / 10] + " muoi";
